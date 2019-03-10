@@ -1,0 +1,27 @@
+{
+  "name": "wgmonitor",
+  "version": "1.0.0",
+  "description": "idk",
+  "main": "app.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/05k4rausdertonne/WGMonitor.git"
+  },
+  "keywords": [
+    "bla",
+    "bli",
+    "blub"
+  ],
+  "author": "Ozey",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/05k4rausdertonne/WGMonitor/issues"
+  },
+  "homepage": "https://github.com/05k4rausdertonne/WGMonitor#readme",
+  "dependencies": {
+    "express": "^4.16.4"
+  }
+}
