@@ -22,6 +22,7 @@
   },
   "homepage": "https://github.com/05k4rausdertonne/WGMonitor#readme",
   "dependencies": {
-    "express": "^4.16.4"
+    "express": "^4.16.4",
+    "request": "^2.81.0"
   }
 }
