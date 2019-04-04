@@ -11,7 +11,6 @@ function fillDepartureTable(station, departures) {
 
     let row;
     let cell;
-    console.log(departures);
 
     for (i = 0; i < maxDepartures && i < departures.length; i++) {
 
