@@ -16,7 +16,7 @@ async function getTimeOffset(timezoneOffset) {
     console.log(data);
     console.log(new Date().getTime());
     console.log*data.currentFileTime;
-    timeOffset = new Date().getTime() - data.currentFileTime;
+    timeOffset = new Date().getTime() - fileTimeToUnixMs(data.currentFileTime);
     console.log(timeOffset);
 }
 
@@ -37,3 +37,7 @@ window.addEventListener("load", function(event) {
 });
 
 getTimeOffset();
+
+function fileTimeToUnixMs(fileTime) {
+    return ((fileTime/10000) - 11644473600000);
+}
