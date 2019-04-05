@@ -5,6 +5,8 @@
         <link href="assets/css/html5reset.css" type="text/css" rel="stylesheet">
         <link href="assets/css/style.css" type="text/css" rel="stylesheet">
 
+        <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:200" rel="stylesheet">
+
         <script type="text/javascript" src="assets/js/util.js"></script>
         <script type="text/javascript" src="assets/js/fill.js"></script>
 
@@ -13,46 +15,58 @@
     <body>
 
         
-
-        <div id="clock">
-            
-        </div>
+        <div class="time" >
+            <div id="clock">
+            </div>
         
-        <div id="date">
-               
+            <div id="date">
+            </div>
         </div>
+
+        <h1>Haltestellenabfahrten</h1>
 
         <div id="departures">
-            <table id="Alaunplatz" class="departures">
-                <thead>
-                    <th>Nr.</th>
-                    <th>Ziel</th>
-                    <th>Abfahrt</th>
-                </thead>
-                <tbody></tbody>
+            <div>
+                <h2>Alaunplatz</h2>
+                <div class="table-departures">
+                    <table id="Alaunplatz" class="departures">
+                        <thead>
+                            <th></th>
+                            <th>Ziel</th>
+                            <th>min</th>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
+            </div>
 
-            </table>
+            <div>
+                <h2>Bischofsweg</h2>
+                <div class="table-departures">
+                    <table id="Bischofsweg" class="departures">
+                            <thead>
+                                <th></th>
+                                <th>Ziel</th>
+                                <th>min</th>
+                            </thead>
+                            <tbody></tbody>
+                    </table>
+                </div>
+            </div>
 
-            <table id="Bischofsweg" class="departures">
-                    <thead>
-                        <th>Nr.</th>
-                        <th>Ziel</th>
-                        <th>Abfahrt</th>
-                    </thead>
-                    <tbody></tbody>
-    
-            </table>
-
-            <table id="Hans-Oster-Strasse" class="departures">
-                    <thead>
-                        <th>Nr.</th>
-                        <th>Ziel</th>
-                        <th>Abfahrt</th>
-                    </thead>
-                    <tbody></tbody>
-    
-            </table>
-
+            <div>
+                <h2>Hans-Oster-Straße</h2>
+                <div class="table-departures">
+                    <table id="Hans-Oster-Strasse" class="departures">
+                            <thead>
+                                <th></th>
+                                <th>Ziel</th>
+                                <th>min</th>
+                            </thead>
+                            <tbody></tbody>
+                    </table>
+                </div>
+            </div>
 
         </div>
         

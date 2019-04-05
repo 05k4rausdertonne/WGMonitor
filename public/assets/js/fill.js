@@ -1,4 +1,4 @@
-const maxDepartures = 10
+const maxDepartures = 8
 
 function fillDepartureTable(station, departures) {
 
@@ -41,36 +41,36 @@ function fillTimeWidgets(){
     switch (dateTime.getDay()) {
 
         case 1:
-            dateString = "Mo";
+            dateString = "Montag, ";
             break;
             
         case 2:
-            dateString = "Di";
+            dateString = "Dienstag, ";
             break;
 
         case 3:
-            dateString = "Mi";
+            dateString = "Mittwoch, ";
             break;
 
         case 4:
-            dateString = "Do";
+            dateString = "Donnerstag, ";
             break;
 
         case 5:
-            dateString = "Fr";
+            dateString = "Freitag, ";
             break;
 
         case 6:
-            dateString = "Sa";
+            dateString = "Samstag, ";
             break;
 
         case 0:
-            dateString = "So";
+            dateString = "Sonntag, ";
             break;
 
     }
     dateString = dateString + " " + padTwo(dateTime.getDate()) + "." 
-        + padTwo(dateTime.getMonth()) + ".";
+        + padTwo(dateTime.getMonth()) + "." + padTwo(dateTime.getYear());
 
     clockString = padTwo(dateTime.getHours()) + ":" 
         + padTwo(dateTime.getMinutes()) + ":" + padTwo(dateTime.getSeconds());
