@@ -15,7 +15,6 @@ async function getTimeOffset(timezoneID) {
     let data = await res.json();
 
     timeOffset = Math.round(Date.now() - fileTimeToUnixMs(data.currentFileTime) + 7200000);
-    console.log(timeOffset);
 }
 
 function getDateTime() {

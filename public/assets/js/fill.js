@@ -36,33 +36,35 @@ function fillTimeWidgets(){
     let dateString = "";
     let clockString = "";
 
+    console.log(dateTime);
+
     switch (dateTime.getDay()) {
 
-        case 0:
+        case 1:
             dateString = "Mo";
             break;
             
-        case 1:
+        case 2:
             dateString = "Di";
             break;
 
-        case 2:
+        case 3:
             dateString = "Mi";
             break;
 
-        case 3:
+        case 4:
             dateString = "Do";
             break;
 
-        case 4:
+        case 5:
             dateString = "Fr";
             break;
 
-        case 5:
+        case 6:
             dateString = "Sa";
             break;
 
-        case 6:
+        case 0:
             dateString = "So";
             break;
 
