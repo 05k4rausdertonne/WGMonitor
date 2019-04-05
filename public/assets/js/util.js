@@ -9,19 +9,21 @@ async function getDepartureDataDVB(station) {
     fillDepartureTable(station, data);       
 }
 
-async function getTimeOffset(timezoneOffset) {
+async function getTimeOffset(timezoneID) {
 
-    let res = await fetch("http://worldclockapi.com/api/json/cet/now");
+    let res = await fetch("http://worldclockapi.com/api/json/" + timezoneID + "/now");
     let data = await res.json();
-    console.log(data);
-    console.log(new Date().getTime());
-    console.log*data.currentFileTime;
-    timeOffset = new Date().getTime() - fileTimeToUnixMs(data.currentFileTime);
+
+    timeOffset = Math.round(Date.now() - fileTimeToUnixMs(data.currentFileTime) + 7200000);
     console.log(timeOffset);
 }
 
+function getDateTime() {
+    return new Date(Date.now() - timeOffset);
+}
 
-function refresh(){
+
+function refreshDepartureTables(){
 
     let departureTables = document.getElementsByClassName("departures");
 
@@ -32,12 +34,32 @@ function refresh(){
 
 window.addEventListener("load", function(event) {
 
-    refresh();
-    setInterval(refresh, 10000);
+    refreshDepartureTables();
+    
+    setInterval(refreshDepartureTables, 10000);
+    
+    fillTimeWidgets();
+    
+    setInterval(fillTimeWidgets, 1000);
 });
 
-getTimeOffset();
+setInterval(getTimeOffset("cet"), 86400000);
 
 function fileTimeToUnixMs(fileTime) {
-    return ((fileTime/10000) - 11644473600000);
+    return Math.round((fileTime/10000) - 11644473600000);
 }
+
+function padTwo(number) {
+    return number >= 10 ? number : "0" + number; 
+}
+
+function clearNode(node){
+
+    while (node.firstChild) {
+        node.removeChild(node.firstChild);
+    }
+
+}
+
+
+

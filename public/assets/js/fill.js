@@ -5,9 +5,7 @@ function fillDepartureTable(station, departures) {
     let table = document.getElementById(station);
     let tbody = table.getElementsByTagName("TBODY")[0];
 
-    while(tbody.firstChild){
-        tbody.removeChild(tbody.firstChild);
-    }
+    clearNode(tbody);
 
     let row;
     let cell;
@@ -25,5 +23,61 @@ function fillDepartureTable(station, departures) {
         }
         tbody.appendChild(row);
     }
+}
+
+function fillTimeWidgets(){
+    let clock = document.getElementById("clock");
+    let date = document.getElementById("date");
+
+    clearNode(clock);
+    clearNode(date);
+
+    let dateTime = getDateTime();
+    let dateString = "";
+    let clockString = "";
+
+    switch (dateTime.getDay()) {
+
+        case 0:
+            dateString = "Mo";
+            break;
+            
+        case 1:
+            dateString = "Di";
+            break;
+
+        case 2:
+            dateString = "Mi";
+            break;
+
+        case 3:
+            dateString = "Do";
+            break;
+
+        case 4:
+            dateString = "Fr";
+            break;
+
+        case 5:
+            dateString = "Sa";
+            break;
+
+        case 6:
+            dateString = "So";
+            break;
+
+    }
+    dateString = dateString + " " + padTwo(dateTime.getDate()) + "." 
+        + padTwo(dateTime.getMonth()) + ".";
+
+    clockString = padTwo(dateTime.getHours()) + ":" 
+        + padTwo(dateTime.getMinutes()) + ":" + padTwo(dateTime.getSeconds());
+    
+    let dateText = document.createTextNode(dateString);
+    let clockText = document.createTextNode(clockString); 
+
+    date.appendChild(dateText);
+    clock.appendChild(clockText);
+    
 }
 
