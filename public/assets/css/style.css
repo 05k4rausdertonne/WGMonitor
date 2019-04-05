@@ -40,8 +40,9 @@ h2 {
 }
 
 .table-departures {
-    border: solid 1px;
+    border: solid 0px;
     border-radius: 10px;
+    background-color: #333a47;
     padding: 10px;
     margin-right: 20px;
 }
