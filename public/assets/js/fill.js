@@ -92,16 +92,13 @@ function fillMeme(data) {
 
         for (j = 0; j < items[i].images.length; j++) {
             
-            if(items[i].images[j].link.includes(".png") 
-                || items[i].images[j].link.includes(".jpg")) {
+            if(items[i].images[j].type.includes("image/")) {
 
                 imgURL = items[i].images[j].link;                
                 break outerLoop;
             }
         }
     }
-
-    console.log(imgURL);
 
     imgElement.src = imgURL;
 

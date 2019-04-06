@@ -14,7 +14,9 @@ async function getTimeOffset(timezoneID) {
     let res = await fetch("http://worldclockapi.com/api/json/" + timezoneID + "/now");
     let data = await res.json();
 
-    timeOffset = Math.round(Date.now() - fileTimeToUnixMs(data.currentFileTime) + 7200000);
+    timeOffset = Math.round(Date.now() - fileTimeToUnixMs(data.currentFileTime) + 3600000);
+    
+    if (data.isDayLightSavingsTime) timeOffset += 3600000;
 }
 
 function getDateTime() {
@@ -40,6 +42,10 @@ window.addEventListener("load", function(event) {
     fillTimeWidgets();
     
     setInterval(fillTimeWidgets, 1000);
+    
+    getMemeData();
+
+    setInterval(getMemeData(), 3600000)
 });
 
 setInterval(getTimeOffset("cet"), 86400000);
@@ -71,11 +77,10 @@ async function getMemeData() {
     let data = await res.json();
     data = data.data;
 
-    console.log(data);
     fillMeme(data);
 }
 
-getMemeData();
+
 
 
 
