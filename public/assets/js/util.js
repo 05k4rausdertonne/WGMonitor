@@ -60,5 +60,22 @@ function clearNode(node){
 
 }
 
+async function getMemeData() {
+
+    let headers = new Headers();
+    headers.set('Authorization', "Client-ID a86175adb6181f3");
+    
+    let res = await fetch("https://api.imgur.com/3/gallery/t/memes/top/day/0", 
+        {method:'GET',
+        headers: headers});
+    let data = await res.json();
+    data = data.data;
+
+    console.log(data);
+    fillMeme(data);
+}
+
+getMemeData();
+
 
 

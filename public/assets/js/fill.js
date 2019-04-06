@@ -36,8 +36,6 @@ function fillTimeWidgets(){
     let dateString = "";
     let clockString = "";
 
-    console.log(dateTime);
-
     switch (dateTime.getDay()) {
 
         case 1:
@@ -81,5 +79,33 @@ function fillTimeWidgets(){
     date.appendChild(dateText);
     clock.appendChild(clockText);
     
+}
+
+function fillMeme(data) {
+
+    let items = data.items;
+    let imgURL = "";
+    let imgElement = document.getElementById("memeOfTheDay");
+
+    outerLoop:
+    for (i = 0; i < items.length; i++) {
+
+        for (j = 0; j < items[i].images.length; j++) {
+            
+            if(items[i].images[j].link.includes(".png") 
+                || items[i].images[j].link.includes(".jpg")) {
+
+                imgURL = items[i].images[j].link;                
+                break outerLoop;
+            }
+        }
+    }
+
+    console.log(imgURL);
+
+    imgElement.src = imgURL;
+
+    
+
 }
 
