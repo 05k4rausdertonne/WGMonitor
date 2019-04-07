@@ -1,4 +1,4 @@
-const maxDepartures = 8
+const maxDepartures = new Object({"Alaunplatz": 4, "Bischofsweg": 8, "Hans-Oster-Strasse": 4});
 
 function fillDepartureTable(station, departures) {
 
@@ -10,7 +10,9 @@ function fillDepartureTable(station, departures) {
     let row;
     let cell;
 
-    for (i = 0; i < maxDepartures && i < departures.length; i++) {
+    console.log(maxDepartures[station]);
+
+    for (i = 0; i < maxDepartures[station] && i < departures.length; i++) {
 
         row = document.createElement("tr");
 
@@ -90,14 +92,28 @@ function fillMeme(data) {
     outerLoop:
     for (i = 0; i < items.length; i++) {
 
-        for (j = 0; j < items[i].images.length; j++) {
-            
-            if(items[i].images[j].type.includes("image/")) {
+        if(!items[i].is_album) {
 
-                imgURL = items[i].images[j].link;                
+            if(items[i].type.includes("image/")) {
+
+                imgURL = items[i].link;                
                 break outerLoop;
             }
+
+        } else {
+
+            for (j = 0; j < items[i].images.length; j++) {
+                        
+                        if(items[i].images[j].type.includes("image/")) {
+
+                            imgURL = items[i].images[j].link;                
+                            break outerLoop;
+                        }
+            }
+
         }
+
+        
     }
 
     imgElement.src = imgURL;

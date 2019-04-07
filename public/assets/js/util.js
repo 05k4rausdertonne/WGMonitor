@@ -3,8 +3,10 @@ var timeOffset = 0;
 
 async function getDepartureDataDVB(station) {
 
-    let res = await fetch('http://widgets.vvo-online.de/abfahrtsmonitor/Abfahrten.do?ort=Dresden&hst=' + station + '&vz=0&lim=15');
+    let res = await fetch('http://widgets.vvo-online.de/abfahrtsmonitor/Abfahrten.do?ort=Dresden&hst=' 
+        + station + '&vz=0&lim=15');
     let data = await res.json();
+
 
     fillDepartureTable(station, data);       
 }
@@ -42,8 +44,6 @@ window.addEventListener("load", function(event) {
     fillTimeWidgets();
     
     setInterval(fillTimeWidgets, 1000);
-    
-    getMemeData();
 
     setInterval(getMemeData(), 3600000)
 });
