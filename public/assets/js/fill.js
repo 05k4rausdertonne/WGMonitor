@@ -10,8 +10,6 @@ function fillDepartureTable(station, departures) {
     let row;
     let cell;
 
-    console.log(maxDepartures[station]);
-
     for (i = 0; i < maxDepartures[station] && i < departures.length; i++) {
 
         row = document.createElement("tr");
@@ -35,6 +33,8 @@ function fillTimeWidgets(){
     clearNode(date);
 
     let dateTime = getDateTime();
+
+    console.log(dateTime.toDateString());
     let dateString = "";
     let clockString = "";
 
@@ -70,7 +70,7 @@ function fillTimeWidgets(){
 
     }
     dateString = dateString + " " + padTwo(dateTime.getDate()) + "." 
-        + padTwo(dateTime.getMonth()) + "." + padTwo(dateTime.getYear());
+        + padTwo(dateTime.getMonth() + 1) + "." + dateTime.getFullYear();
 
     clockString = padTwo(dateTime.getHours()) + ":" 
         + padTwo(dateTime.getMinutes()) + ":" + padTwo(dateTime.getSeconds());
