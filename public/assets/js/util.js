@@ -1,4 +1,5 @@
 var timeOffset = 0;
+const weatherApiKey = "bfc13cb09e9587a89f7fc440a020963f";
 
 
 async function getDepartureDataDVB(station) {
@@ -87,6 +88,19 @@ function reloadPage() {
 
     window.location.reload(true);
 }
+
+async function getWeatherData(city) {
+
+    let res = await fetch("https://api.openweathermap.org/data/2.5/forecast?q=" + city + ",de&APPID=" + weatherApiKey + "&mode=json");
+    let data = await res.json();
+
+    console.log(data);
+
+
+
+}
+
+getWeatherData(Dresden);
 
 
 
