@@ -92,15 +92,19 @@ function reloadPage() {
 async function getWeatherData(city) {
 
     let res = await fetch("https://api.openweathermap.org/data/2.5/forecast?q=" + city + ",de&APPID=" + weatherApiKey + "&mode=json");
-    let data = await res.json();
+    let forecast = await res.json();
 
-    console.log(data);
+    res = await fetch("https://api.openweathermap.org/data/2.5/weather?q=" + city + ",de&APPID=" + weatherApiKey + "&mode=json");
+    let currentWeather = await res.json();
+
+    console.log(currentWeather);
+    console.log(forecast);
 
 
 
 }
 
-getWeatherData(Dresden);
+getWeatherData("Dresden"); //id: 2935022
 
 
 
