@@ -87,6 +87,7 @@ function fillMeme(data) {
     let items = data.items;
     let imgURL = "";
     let imgElement = document.getElementById("memeOfTheDay");
+    let imgTitle = document.getElementById("memeCaption");
 
     outerLoop:
     for (i = 0; i < items.length; i++) {
@@ -95,7 +96,9 @@ function fillMeme(data) {
 
             if(items[i].type.includes("image/")) {
 
-                imgURL = items[i].link;                
+                imgURL = items[i].link;
+                
+                imgTitle.appendChild(document.createTextNode(items[i].title));             
                 break outerLoop;
             }
 
@@ -105,6 +108,7 @@ function fillMeme(data) {
                         
                         if(items[i].images[j].type.includes("image/")) {
 
+                            imgTitle.appendChild(document.createTextNode(items[i].title));
                             imgURL = items[i].images[j].link;                
                             break outerLoop;
                         }
