@@ -34,7 +34,6 @@ function fillTimeWidgets(){
 
     let dateTime = getDateTime();
 
-    console.log(dateTime.toDateString());
     let dateString = "";
     let clockString = "";
 
