@@ -45,7 +45,10 @@ window.addEventListener("load", function(event) {
     
     setInterval(fillTimeWidgets, 1000);
 
-    setInterval(getMemeData(), 3600000)
+    getMemeData();
+
+    setTimeout(reloadPage, 3600000);
+
 });
 
 setInterval(getTimeOffset("cet"), 86400000);
@@ -78,6 +81,11 @@ async function getMemeData() {
     data = data.data;
 
     fillMeme(data);
+}
+
+function reloadPage() {
+
+    window.location.reload(true);
 }
 
 
