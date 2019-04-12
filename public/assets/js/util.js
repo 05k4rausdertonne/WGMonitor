@@ -99,10 +99,13 @@ async function getWeatherData(city) {
 
     console.log(currentWeather);
     console.log(forecast);
+    console.log(kelvinToCelsius(currentWeather.main.temp) + " °C");
 
 
 
 }
+
+function kelvinToCelsius(kelvin) {return kelvin - 273.15}
 
 getWeatherData("Dresden"); //id: 2935022
 
