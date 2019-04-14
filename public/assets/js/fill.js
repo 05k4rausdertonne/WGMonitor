@@ -1,4 +1,5 @@
-const maxDepartures = new Object({"Alaunplatz": 4, "Bischofsweg": 8, "Hans-Oster-Strasse": 4});
+const MAX_DEPARTURES = new Object({"Alaunplatz": 4, "Bischofsweg": 8, "Hans-Oster-Strasse": 4});
+const MAX_FORECAST_VALUES = 8;
 
 function fillDepartureTable(station, departures) {
 
@@ -10,7 +11,7 @@ function fillDepartureTable(station, departures) {
     let row;
     let cell;
 
-    for (i = 0; i < maxDepartures[station] && i < departures.length; i++) {
+    for (i = 0; i < MAX_DEPARTURES[station] && i < departures.length; i++) {
 
         row = document.createElement("tr");
 
@@ -113,15 +114,45 @@ function fillMeme(data) {
                             break outerLoop;
                         }
             }
-
-        }
-
-        
+        }        
     }
 
     imgElement.src = imgURL;
+}
 
-    
+function fillWeatherWidget(currentData, forecastData) {
+
+    let currentWidget = document.getElementById("currentWeather").getElementsByTagName("TR");
+    let forecastWidget = document.getElementById("forecast").getElementsByTagName("TR");    
+
+    currentWidget[0].innerHTML = "</td>" + Math.round(kelvinToCelsius(currentData.main.temp) * 10) / 10 
+        + " °C</td>";
+    currentWidget[1].innerHTML = "<td><img src='http://openweathermap.org/img/w/" 
+        + currentData.weather[0].icon + ".png' alt='" + currentData.weather[0].icon + "'></td>";
+    currentWidget[2].innerHTML = "<td>" + Math.round(currentData.wind.speed * 10) / 10 
+        + " km/h</td>";
+
+    for(i = 0; i < MAX_FORECAST_VALUES && i < forecastData.list.length; i++) {
+
+        let timeCell = document.createElement("td");
+        timeCell.innerHTML = padTwo(new Date(forecastData.list[i].dt * 1000).getHours()) + ":00";
+        forecastWidget[0].appendChild(timeCell);
+
+        let tempCell = document.createElement("td");
+        tempCell.innerHTML = Math.round(kelvinToCelsius(forecastData.list[i].main.temp) * 10) / 10 + " °C";
+        forecastWidget[1].appendChild(tempCell);
+        
+        let iconCell = document.createElement("td");
+        iconCell.innerHTML = "<img src='http://openweathermap.org/img/w/" 
+            + forecastData.list[i].weather[0].icon 
+            + ".png' alt='" + forecastData.list[i].weather[0].icon  + "'>";
+        forecastWidget[2].appendChild(iconCell);
+
+        let windCell = document.createElement("td");
+        windCell.innerHTML = Math.round(forecastData.list[i].wind.speed * 10) / 10 + " km/h";
+        forecastWidget[3].appendChild(windCell);
+
+    }
 
 }
 

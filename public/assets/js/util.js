@@ -101,8 +101,7 @@ async function getWeatherData(city) {
     console.log(forecast);
     console.log(kelvinToCelsius(currentWeather.main.temp) + " °C");
 
-
-
+    fillWeatherWidget(currentWeather, forecast);
 }
 
 function kelvinToCelsius(kelvin) {return kelvin - 273.15}

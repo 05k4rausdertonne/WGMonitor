@@ -38,6 +38,19 @@ h2 {
     flex-direction: row;
 }
 
+#weather {
+    display: flex;
+    flex-direction: row;
+}
+
+#cTemp {
+    font-size: 3em;
+}
+
+#currentWeather {
+    margin-right: 10px;
+}
+
 .table-departures {
     border: solid 0px;
     border-radius: 10px;
@@ -54,11 +67,3 @@ th {
 td {
     padding-right: 20px;
 }
-
-/*
-#Dresden_z704_date {
-    align-self: right;
-    
-}
-
-*/
