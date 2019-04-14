@@ -1,5 +1,6 @@
 var timeOffset = 0;
-const weatherApiKey = "bfc13cb09e9587a89f7fc440a020963f";
+const WEATHER_API_KEY = "bfc13cb09e9587a89f7fc440a020963f";
+
 
 
 async function getDepartureDataDVB(station) {
@@ -46,6 +47,10 @@ window.addEventListener("load", function(event) {
     
     setInterval(fillTimeWidgets, 1000);
 
+    getWeatherData("Dresden");
+
+    setInterval(getWeatherData, 10000, "Dresden")
+
     getMemeData();
 
     setTimeout(reloadPage, 3600000);
@@ -91,15 +96,11 @@ function reloadPage() {
 
 async function getWeatherData(city) {
 
-    let res = await fetch("https://api.openweathermap.org/data/2.5/forecast?q=" + city + ",de&APPID=" + weatherApiKey + "&mode=json");
+    let res = await fetch("https://api.openweathermap.org/data/2.5/forecast?q=" + city + ",de&APPID=" + WEATHER_API_KEY + "&mode=json");
     let forecast = await res.json();
 
-    res = await fetch("https://api.openweathermap.org/data/2.5/weather?q=" + city + ",de&APPID=" + weatherApiKey + "&mode=json");
+    res = await fetch("https://api.openweathermap.org/data/2.5/weather?q=" + city + ",de&APPID=" + WEATHER_API_KEY + "&mode=json");
     let currentWeather = await res.json();
-
-    console.log(currentWeather);
-    console.log(forecast);
-    console.log(kelvinToCelsius(currentWeather.main.temp) + " °C");
 
     fillWeatherWidget(currentWeather, forecast);
 }

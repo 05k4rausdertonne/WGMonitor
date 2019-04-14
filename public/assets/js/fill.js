@@ -123,7 +123,10 @@ function fillMeme(data) {
 function fillWeatherWidget(currentData, forecastData) {
 
     let currentWidget = document.getElementById("currentWeather").getElementsByTagName("TR");
-    let forecastWidget = document.getElementById("forecast").getElementsByTagName("TR");    
+    let forecastWidget = document.getElementById("forecast").getElementsByTagName("TR");
+    
+    Array.prototype.forEach.call(currentWidget, element => {clearNode(element)});
+    Array.prototype.forEach.call(forecastWidget, element => {clearNode(element)});
 
     currentWidget[0].innerHTML = "</td>" + Math.round(kelvinToCelsius(currentData.main.temp) * 10) / 10 
         + " °C</td>";
