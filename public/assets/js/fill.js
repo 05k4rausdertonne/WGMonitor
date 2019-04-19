@@ -38,37 +38,8 @@ function fillTimeWidgets(){
     let dateString = "";
     let clockString = "";
 
-    switch (dateTime.getDay()) {
+    dateString = getDay(dateTime.getDay()) + ", ";
 
-        case 1:
-            dateString = "Montag, ";
-            break;
-            
-        case 2:
-            dateString = "Dienstag, ";
-            break;
-
-        case 3:
-            dateString = "Mittwoch, ";
-            break;
-
-        case 4:
-            dateString = "Donnerstag, ";
-            break;
-
-        case 5:
-            dateString = "Freitag, ";
-            break;
-
-        case 6:
-            dateString = "Samstag, ";
-            break;
-
-        case 0:
-            dateString = "Sonntag, ";
-            break;
-
-    }
     dateString = dateString + " " + padTwo(dateTime.getDate()) + "." 
         + padTwo(dateTime.getMonth() + 1) + "." + dateTime.getFullYear();
 
@@ -122,6 +93,8 @@ function fillMeme(data) {
 
 function fillWeatherWidget(currentData, forecastData) {
 
+    console.log(forecastData);
+
     let currentWidget = document.getElementById("currentWeather").getElementsByTagName("TR");
     let forecastWidget = document.getElementById("forecast").getElementsByTagName("TR");
     
@@ -135,27 +108,32 @@ function fillWeatherWidget(currentData, forecastData) {
     currentWidget[2].innerHTML = "<td>" + Math.round(currentData.wind.speed * 10) / 10 
         + " km/h</td>";
 
-    for(i = 0; i < MAX_FORECAST_VALUES && i < forecastData.list.length; i++) {
+    for(i = 0; i < MAX_FORECAST_VALUES && i < forecastData.length; i++) {
 
-        let timeCell = document.createElement("td");
-        timeCell.innerHTML = padTwo(new Date(forecastData.list[i].dt * 1000).getHours()) + ":00";
-        forecastWidget[0].appendChild(timeCell);
+        let date = new Date(forecastData[i].date * 1000);
+
+        let dateCell = document.createElement("td");
+        dateCell.innerHTML = getDay(date.getDay());
+        forecastWidget[0].appendChild(dateCell);
 
         let tempCell = document.createElement("td");
-        tempCell.innerHTML = Math.round(kelvinToCelsius(forecastData.list[i].main.temp) * 10) / 10 + " °C";
+        tempCell.innerHTML = Math.round(kelvinToCelsius(forecastData[i].min) * 10) / 10 + " °C <br>bis "
+            + Math.round(kelvinToCelsius(forecastData[i].max) * 10) / 10 + " °C";
         forecastWidget[1].appendChild(tempCell);
         
         let iconCell = document.createElement("td");
         iconCell.innerHTML = "<img src='http://openweathermap.org/img/w/" 
-            + forecastData.list[i].weather[0].icon 
-            + ".png' alt='" + forecastData.list[i].weather[0].icon  + "'>";
+            + forecastData[i].icon 
+            + "d.png' alt='" + forecastData[i].icon  + "d'>";
         forecastWidget[2].appendChild(iconCell);
 
         let windCell = document.createElement("td");
-        windCell.innerHTML = Math.round(forecastData.list[i].wind.speed * 10) / 10 + " km/h";
+        windCell.innerHTML = "Ø " + Math.round(forecastData[i].wind * 10) / 10 + " km/h";
         forecastWidget[3].appendChild(windCell);
 
     }
 
 }
+
+
 

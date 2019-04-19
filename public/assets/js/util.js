@@ -1,42 +1,6 @@
 var timeOffset = 0;
 const WEATHER_API_KEY = "bfc13cb09e9587a89f7fc440a020963f";
 
-
-
-async function getDepartureDataDVB(station) {
-
-    let res = await fetch('http://widgets.vvo-online.de/abfahrtsmonitor/Abfahrten.do?ort=Dresden&hst=' 
-        + station + '&vz=0&lim=15');
-    let data = await res.json();
-
-
-    fillDepartureTable(station, data);       
-}
-
-async function getTimeOffset(timezoneID) {
-
-    let res = await fetch("http://worldclockapi.com/api/json/" + timezoneID + "/now");
-    let data = await res.json();
-
-    timeOffset = Math.round(Date.now() - fileTimeToUnixMs(data.currentFileTime) + 3600000);
-    
-    if (data.isDayLightSavingsTime) timeOffset += 3600000;
-}
-
-function getDateTime() {
-    return new Date(Date.now() - timeOffset);
-}
-
-
-function refreshDepartureTables(){
-
-    let departureTables = document.getElementsByClassName("departures");
-
-    for(i = 0; i < departureTables.length; i++) {
-        getDepartureDataDVB(departureTables[i].id);
-    }
-}
-
 window.addEventListener("load", function(event) {
 
     refreshDepartureTables();
@@ -49,7 +13,7 @@ window.addEventListener("load", function(event) {
 
     getWeatherData("Dresden");
 
-    setInterval(getWeatherData, 10000, "Dresden")
+    setInterval(getWeatherData, 600000, "Dresden")
 
     getMemeData();
 
@@ -57,7 +21,20 @@ window.addEventListener("load", function(event) {
 
 });
 
-setInterval(getTimeOffset("cet"), 86400000);
+setInterval(getTimeOffset, 86400000, "cet");
+
+function getDateTime() {
+    return new Date(Date.now() - timeOffset);
+}
+
+function refreshDepartureTables(){
+
+    let departureTables = document.getElementsByClassName("departures");
+
+    for(i = 0; i < departureTables.length; i++) {
+        getDepartureDataDVB(departureTables[i].id);
+    }
+}
 
 function fileTimeToUnixMs(fileTime) {
     return Math.round((fileTime/10000) - 11644473600000);
@@ -75,39 +52,42 @@ function clearNode(node){
 
 }
 
-async function getMemeData() {
-
-    let headers = new Headers();
-    headers.set('Authorization', "Client-ID a86175adb6181f3");
-    
-    let res = await fetch("https://api.imgur.com/3/gallery/t/memes/top/day/0", 
-        {method:'GET',
-        headers: headers});
-    let data = await res.json();
-    data = data.data;
-
-    fillMeme(data);
-}
-
 function reloadPage() {
 
     window.location.reload(true);
 }
 
-async function getWeatherData(city) {
-
-    let res = await fetch("https://api.openweathermap.org/data/2.5/forecast?q=" + city + ",de&APPID=" + WEATHER_API_KEY + "&mode=json");
-    let forecast = await res.json();
-
-    res = await fetch("https://api.openweathermap.org/data/2.5/weather?q=" + city + ",de&APPID=" + WEATHER_API_KEY + "&mode=json");
-    let currentWeather = await res.json();
-
-    fillWeatherWidget(currentWeather, forecast);
-}
-
 function kelvinToCelsius(kelvin) {return kelvin - 273.15}
 
-getWeatherData("Dresden"); //id: 2935022
+//getWeatherData("Dresden"); //id: 2935022
+
+function getDay(day) {
+
+    switch (day) {
+
+        case 1:
+            return "Montag";
+            
+        case 2:
+            return "Dienstag";
+
+        case 3:
+            return "Mittwoch";
+
+        case 4:
+            return"Donnerstag";
+
+        case 5:
+            return "Freitag";
+
+        case 6:
+            return "Samstag";
+
+        case 0:
+            return "Sonntag";
+
+    }
+}
 
 
 
