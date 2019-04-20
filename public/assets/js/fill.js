@@ -93,8 +93,6 @@ function fillMeme(data) {
 
 function fillWeatherWidget(currentData, forecastData) {
 
-    console.log(forecastData);
-
     let currentWidget = document.getElementById("currentWeather").getElementsByTagName("TR");
     let forecastWidget = document.getElementById("forecast").getElementsByTagName("TR");
     
@@ -103,8 +101,10 @@ function fillWeatherWidget(currentData, forecastData) {
 
     currentWidget[0].innerHTML = "</td>" + Math.round(kelvinToCelsius(currentData.main.temp) * 10) / 10 
         + " °C</td>";
+
     currentWidget[1].innerHTML = "<td><img src='http://openweathermap.org/img/w/" 
         + currentData.weather[0].icon + ".png' alt='" + currentData.weather[0].icon + "'></td>";
+        
     currentWidget[2].innerHTML = "<td>" + Math.round(currentData.wind.speed * 10) / 10 
         + " km/h</td>";
 

@@ -23,6 +23,7 @@ async function getWeatherData(city) {
     console.log(forecast);
 
     fillWeatherWidget(currentWeather, calcDailyWeather(forecast));
+    drawWeatherChart(forecast, '.ct-chart-weather');
 }
 
 async function getTimeOffset(timezoneID) {

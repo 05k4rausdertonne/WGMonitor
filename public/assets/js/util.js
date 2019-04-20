@@ -1,5 +1,4 @@
 var timeOffset = 0;
-const WEATHER_API_KEY = "bfc13cb09e9587a89f7fc440a020963f";
 
 window.addEventListener("load", function(event) {
 
@@ -18,7 +17,6 @@ window.addEventListener("load", function(event) {
     getMemeData();
 
     setTimeout(reloadPage, 3600000);
-
 });
 
 setInterval(getTimeOffset, 86400000, "cet");
@@ -49,17 +47,11 @@ function clearNode(node){
     while (node.firstChild) {
         node.removeChild(node.firstChild);
     }
-
 }
 
-function reloadPage() {
-
-    window.location.reload(true);
-}
+function reloadPage() {window.location.reload(true);}
 
 function kelvinToCelsius(kelvin) {return kelvin - 273.15}
-
-//getWeatherData("Dresden"); //id: 2935022
 
 function getDay(day) {
 
@@ -87,6 +79,11 @@ function getDay(day) {
             return "Sonntag";
 
     }
+}
+
+function timestampToTime(dt) {
+    let tempDate = new Date(dt * 1000);
+    return padTwo(tempDate.getHours()) + ":" + padTwo(tempDate.getMinutes());
 }
 
 

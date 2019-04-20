@@ -1,3 +1,16 @@
+const WEATHER_API_KEY = "bfc13cb09e9587a89f7fc440a020963f";
+const MAX_CHART_VALUES = 16;
+const CHART_OTIONS = {
+    showArea: true,
+    showLine: false,
+    showPoint: false,
+    width: "600px",
+    fullWidth: true,
+    axisX: {
+      showGrid: false
+    }
+}
+
 function calcDailyWeather(forecast) {
     let date = forecast.list[0].dt_txt.split(" ")[0];
     let min = 1000;
@@ -24,8 +37,9 @@ function calcDailyWeather(forecast) {
             });
 
             Object.keys(icons).forEach(element => { 
+
                 if (icons[element] == maxIcon) {
-                    console.log(element);
+
                     daily[daily.length - 1].icon = element;}             
             });
 
@@ -47,6 +61,7 @@ function calcDailyWeather(forecast) {
 
         if(tempIcon in icons) {
             icons[tempIcon] ++;
+
         } else {
             icons[tempIcon] = 1;
         }
@@ -58,4 +73,19 @@ function calcDailyWeather(forecast) {
     }
 
     return daily;
+}
+
+function drawWeatherChart(forecast, tag) {
+
+    data = {labels: [], series: [[], []]}
+
+    for(i = 0; i < MAX_CHART_VALUES && i < forecast.list.length; i++) {
+
+        data.labels[i] = timestampToTime(forecast.list[i].dt);
+        data.series[0][i] = kelvinToCelsius(forecast.list[i].main.temp);
+    }
+
+    data.labels.pop();
+
+    new Chartist.Line(tag, data, CHART_OTIONS);
 }
