@@ -1,10 +1,10 @@
 const WEATHER_API_KEY = "bfc13cb09e9587a89f7fc440a020963f";
-const MAX_CHART_VALUES = 16;
+const MAX_CHART_VALUES = 10;
 const CHART_OTIONS = {
     showArea: true,
     showLine: false,
     showPoint: false,
-    width: "600px",
+    width: "450px",
     fullWidth: true,
     axisX: {
       showGrid: false
