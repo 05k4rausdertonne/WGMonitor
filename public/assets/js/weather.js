@@ -2,7 +2,7 @@ const WEATHER_API_KEY = "bfc13cb09e9587a89f7fc440a020963f";
 const MAX_CHART_VALUES = 10;
 const CHART_OTIONS = {
     showArea: true,
-    showLine: false,
+    showLine: true,
     showPoint: false,
     width: "450px",
     fullWidth: true,
