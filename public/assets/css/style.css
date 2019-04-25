@@ -4,6 +4,11 @@ body {
     color: #fff;
     font-family: 'Source Sans Pro', sans-serif;
     font-size: 1.1em;
+    overflow: hidden;
+}
+
+::-webkit-scrollbar { 
+    display: none; 
 }
 
 h1 {
@@ -57,6 +62,18 @@ h2 {
     background-color: #333a47;
     padding: 10px;
     margin-right: 20px;
+}
+
+#imgur {
+    width: 30vw;
+    height: 80vh;
+    overflow: auto; 
+
+
+}
+
+#memeOfTheDay {
+    width: 100%;
 }
 
 th {
