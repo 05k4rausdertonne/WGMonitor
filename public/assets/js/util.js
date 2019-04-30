@@ -18,7 +18,7 @@ window.addEventListener("load", function(event) {
 
     setTimeout(reloadPage, 3600000);
 
-    animateMeme(-1);
+    animateMeme(-1, 4000);
 });
 
 setInterval(getTimeOffset, 86400000, "cet");
@@ -88,19 +88,19 @@ function timestampToTime(dt) {
     return padTwo(tempDate.getHours()) + ":" + padTwo(tempDate.getMinutes());
 }
 
-function animateMeme(direction){
+function animateMeme(direction, scrollTime){
 
     if(direction > 0) {
         $("#imgur").animate({
         scrollTop: 0
-        }, 4000);   
+        }, scrollTime);
     } else {
         $("#imgur").animate({
         scrollTop: $("#memeOfTheDay").height() - $("#imgur").height()
-        }, 4000);
+        }, scrollTime);
     }
     //console.log($("#memeOfTheDay").height() - $("#imgur").height());
-    setTimeout(animateMeme, 8000, -direction);
+    setTimeout(animateMeme, scrollTime + 4000, -direction);
 
     
     
