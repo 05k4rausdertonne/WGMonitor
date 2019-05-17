@@ -38,10 +38,12 @@ h2 {
     font-size: 1.3em;
 }
 
+/*
 #departures {
     display: flex;
     flex-direction: row;
 }
+*/
 
 #weather {
     display: flex;
@@ -68,8 +70,6 @@ h2 {
     width: 30vw;
     height: 80vh;
     overflow: auto; 
-
-
 }
 
 #memeOfTheDay {

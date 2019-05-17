@@ -20,7 +20,128 @@
 
     <body>
 
+        <table>
+            <tr>
+                <td>
+                    <div class="time" >
+                        <div id="clock"></div>
+                        <div id="date"></div>
+                    </div>
+                    
+                    
+                    <h1>Wetter</h1>
+                    
+                    <!--  <div id="weather">  -->
+
+
+                    <!-- currentWeather-Tabelle vorbereitet
+                        <table id="currentWeather">
+                            <tr>
+                                <td></td>
+                                <td>heute</td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td id=cIcon></td>
+                                <td id=cTemp></td>
+                                <td>
+                                    <span><img src="WindIcon"><p id="cWind"></p></span>
+                                    <span><img src="UmbrellaIcon"><p id="cRain"></p></span>
+                                    <span><img src="Up"><p id="SunUp"></p><img src="Down"><p id="SunDown"></p></span>
+                                </td>
+                            </tr>
+                        </table>
+                    -->
+
+                           
+                        <table id="currentWeather">
+                            <tr id="cTemp"></tr>
+                            <tr id="cIcon"></tr>
+                            <tr id="cWind"></tr>
+                        </table>
+                  
+
+                        <div class="ct-chart-weather"></div>
+                    
+                        <table id="forecast">
+                            <tr id="fDate"></tr>
+                            <tr id="fTemp"></tr>
+                            <tr id="fIcon"></tr>
+                            <tr id="fWind"></tr>
+                        </table>
+                    
+                    <!--  </div>   -->
+                </td>
+
+
+                <td>
+                        
+                    <h1>Haltestellenabfahrten</h1>
+
+                        <div id="departures">
+                            <div>
+                                <h2>Alaunplatz</h2>
+                                <div class="table-departures">
+                                    <table id="Alaunplatz" class="departures">
+                                        <thead>
+                                            <th></th>
+                                            <th>Ziel</th>
+                                            <th>min</th>
+                                        </thead>
+                                        <tbody></tbody>
+                                    </table>
+                                </div>
+                            </div>
+                
+                            <div>
+                                <h2>Bischofsweg</h2>
+                                <div class="table-departures">
+                                    <table id="Bischofsweg" class="departures">
+                                            <thead>
+                                                <th></th>
+                                                <th>Ziel</th>
+                                                <th>min</th>
+                                            </thead>
+                                            <tbody></tbody>
+                                    </table>
+                                </div>
+                            </div>
+                
+                            <div>
+                                <h2>Hans-Oster-Straße</h2>
+                                <div class="table-departures">
+                                    <table id="Hans-Oster-Strasse" class="departures">
+                                            <thead>
+                                                <th></th>
+                                                <th>Ziel</th>
+                                                <th>min</th>
+                                            </thead>
+                                            <tbody></tbody>
+                                    </table>
+                                </div>
+                            </div>
+                
+                        </div>
+                </td>
+
+
+                <td>
+
+                    <h1>Meme des Tages</h1>
+                        
+                    <h2 id="memeCaption"></h2>
         
+                    <div id="imgur">            
+                        <img src="" alt="memeOfTheDay" id="memeOfTheDay">
+                        <p id="memeDescription"></p>
+                    </div>
+
+                </td>
+            </tr>
+        </table>
+
+        
+        <!--
         <div class="time" >
             <div id="clock">
             </div>
@@ -111,6 +232,8 @@
 
         </div>
         
+
+    -->
 
             
 
