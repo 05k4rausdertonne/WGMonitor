@@ -18,7 +18,7 @@ window.addEventListener("load", function(event) {
 
     setTimeout(reloadPage, 3600000);
 
-    animateMeme(-1, 4000);
+    //animateMeme(-1, 4000);
 });
 
 setInterval(getTimeOffset, 86400000, "cet");
