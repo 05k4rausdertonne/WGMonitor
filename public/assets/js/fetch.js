@@ -9,7 +9,7 @@ async function getMemeData() {
     let data = await res.json();
     data = data.data;
 
-    console.log(data)
+    console.log(data);
 
     fillMeme(data);
 }

@@ -2,15 +2,15 @@ var http = require('http');
 var express = require('express');
 var app = express();
 var sys = require('util');
+var fetch = require('node-fetch');
 var path = require('path');
+var server = require('./server.js');
 
 app.use( express.static( path.join(__dirname, "public") ) );
 
-/*http.createServer(function (req, res) {
-  res.writeHead(200, {'Content-Type': 'text/html'});
-  res.write("The date and time are currently: " + dt.myDateTime());
-  res.end();
-}).listen(8080);*/
+server.serverInit();
+
+setInterval(server.serverLoop, 1000);
 
 var server = app.listen(3000, function () {
     var host = server.address().address;
