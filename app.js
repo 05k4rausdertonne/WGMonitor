@@ -10,8 +10,6 @@ app.use( express.static( path.join(__dirname, "public") ) );
 
 server.serverInit();
 
-setInterval(server.serverLoop, 1000);
-
 var server = app.listen(3000, function () {
     var host = server.address().address;
     var port = server.address().port;

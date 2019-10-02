@@ -22,13 +22,9 @@ exports.serverInit = function() {
 
     setInterval(getTemp, 3600000, "Dresden");
 
-}
+    setInterval(fillClock, 1000);
 
-exports.serverLoop = function() {
-
-    fillClock();
-
-    sendFrame();
+    setInterval(sendFrame, 100);    
 
 }
 
@@ -74,6 +70,7 @@ function fillTemp(myTemp){
     tempDigits.push("" + myTemp % 10);
     tempDigits.push("deg");
     tempDigits.push("c");
+    tempDigits.push("space")
 
     tempDigits.forEach((element, index) => {
         drawLetter(element, offsets[6] + (index * font.Width), offsets[5], colorPalette[index]);  
