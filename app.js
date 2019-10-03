@@ -4,11 +4,8 @@ var app = express();
 var sys = require('util');
 var fetch = require('node-fetch');
 var path = require('path');
-var server = require('./server.js');
 
 app.use( express.static( path.join(__dirname, "public") ) );
-
-server.serverInit();
 
 var server = app.listen(3000, function () {
     var host = server.address().address;
