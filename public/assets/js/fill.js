@@ -104,7 +104,7 @@ function fillWeatherWidget(currentData, forecastData) {
     currentWidget[0].innerHTML = "</td>" + Math.round(kelvinToCelsius(currentData.main.temp) * 10) / 10 
         + " °C</td>";
 
-    currentWidget[1].innerHTML = "<td><img src='http://openweathermap.org/img/wd/" 
+    currentWidget[1].innerHTML = "<td><img src='http://openweathermap.org/img/wn/" 
         + currentData.weather[0].icon + "@2x.png' alt='" + currentData.weather[0].icon + "'></td>";
         
     currentWidget[2].innerHTML = "<td>" + Math.round(currentData.wind.speed * 10) / 10 
@@ -124,7 +124,7 @@ function fillWeatherWidget(currentData, forecastData) {
         forecastWidget[1].appendChild(tempCell);
         
         let iconCell = document.createElement("td");
-        iconCell.innerHTML = "<img src='http://openweathermap.org/img/wd/" 
+        iconCell.innerHTML = "<img src='http://openweathermap.org/img/wn/" 
             + forecastData[i].icon 
             + "d.png' alt='" + forecastData[i].icon  + "d'>";
         forecastWidget[2].appendChild(iconCell);
