@@ -9,6 +9,8 @@ async function getMemeData() {
     let data = await res.json();
     data = data.data;
 
+    console.log(data);
+
     fillMeme(data);
 }
 
@@ -20,7 +22,7 @@ async function getWeatherData(city) {
     res = await fetch("https://api.openweathermap.org/data/2.5/weather?q=" + city + ",de&APPID=" + WEATHER_API_KEY + "&mode=json");
     let currentWeather = await res.json();
 
-    console.log(forecast);
+    //console.log(forecast);
 
     fillWeatherWidget(currentWeather, calcDailyWeather(forecast));
     drawWeatherChart(forecast, '.ct-chart-weather');
@@ -43,5 +45,5 @@ async function getDepartureDataDVB(station) {
     let data = await res.json();
 
 
-    fillDepartureTable(station, data);       
+    fillDepartureTable(station, data); 
 }
