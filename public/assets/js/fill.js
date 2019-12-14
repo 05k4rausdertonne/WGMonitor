@@ -97,6 +97,9 @@ function fillWeatherWidget(currentData, forecastData) {
 
     let currentWidget = document.getElementById("currentWeather").getElementsByTagName("TR");
     let forecastWidget = document.getElementById("forecast").getElementsByTagName("TR");
+    let tabIcon = document.getElementById("tabIcon");
+    let iconURL = "http://openweathermap.org/img/wn/" 
+    + currentData.weather[0].icon + "@2x.png"
     
     Array.prototype.forEach.call(currentWidget, element => {clearNode(element)});
     Array.prototype.forEach.call(forecastWidget, element => {clearNode(element)});
@@ -104,11 +107,13 @@ function fillWeatherWidget(currentData, forecastData) {
     currentWidget[0].innerHTML = "</td>" + Math.round(kelvinToCelsius(currentData.main.temp) * 10) / 10 
         + " °C</td>";
 
-    currentWidget[1].innerHTML = "<td><img src='http://openweathermap.org/img/wn/" 
-        + currentData.weather[0].icon + "@2x.png' alt='" + currentData.weather[0].icon + "'></td>";
+    currentWidget[1].innerHTML = "<td><img src='" + iconURL + 
+    "' alt='" + currentData.weather[0].icon + "'></td>";
         
     currentWidget[2].innerHTML = "<td>" + Math.round(currentData.wind.speed * 10) / 10 
         + " km/h</td>";
+
+    tabIcon.href = iconURL;
 
     for(i = 0; i < MAX_FORECAST_VALUES && i < forecastData.length; i++) {
 
