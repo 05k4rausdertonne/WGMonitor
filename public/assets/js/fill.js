@@ -57,40 +57,46 @@ function fillTimeWidgets(){
 
 function fillMeme(data) {
 
-    let items = data.items;
+    let items = data/*.items*/;
     let imgURL = "";
     let imgElement = document.getElementById("memeOfTheDay");
     let imgTitle = document.getElementById("memeCaption");
+    let bestVotes = 0;
 
     outerLoop:
     for (i = 0; i < items.length; i++) {
 
         if(!items[i].is_album) {
 
-            if(items[i].type.includes("image/")) {
+            if(items[i].type.includes("image/") &&
+            items[i].height/items[i].width <= MAX_IMAGE_RATIO) {
 
-                imgURL = items[i].link;
-                
-                imgTitle.appendChild(document.createTextNode(items[i].title));             
-                break outerLoop;
+                if(bestVotes < items[i].score){
+
+                    bestVotes = items[i].score;
+
+                    imgItem = items[i];
+                }
             }
 
         } else {
 
-            for (j = 0; j < items[i].images.length; j++) {
+            // for (j = 0; j < items[i].images.length; j++) {
                         
-                        if(items[i].images[j].type.includes("image/") &&
-                        items[i].images[j].height/items[i].images[j].width <= MAX_IMAGE_RATIO) {
+            //             if(items[i].images[j].type.includes("image/") &&
+            //             items[i].images[j].height/items[i].images[j].width <= MAX_IMAGE_RATIO) {
 
-                            imgTitle.appendChild(document.createTextNode(items[i].title));
-                            imgURL = items[i].images[j].link;                
-                            break outerLoop;
-                        }
-            }
+            //                 imgTitle.appendChild(document.createTextNode(items[i].title));
+            //                 imgURL = items[i].images[j].link;                
+            //                 break outerLoop;
+            //             }
+            // }
         }        
     }
+    
+    imgTitle.appendChild(document.createTextNode(imgItem.title));
 
-    imgElement.src = imgURL;
+    imgElement.src = imgItem.link;
 }
 
 function fillWeatherWidget(currentData, forecastData) {
