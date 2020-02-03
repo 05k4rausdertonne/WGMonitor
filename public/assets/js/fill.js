@@ -1,6 +1,7 @@
 const MAX_DEPARTURES = new Object({"Alaunplatz": 4, "Bischofsweg": 8, "Hans-Oster-Strasse": 4});
 const MAX_FORECAST_VALUES = 8;
-const MAX_IMAGE_RATIO = 2 // = height/width
+//const MAX_IMAGE_RATIO = 1.75 // = height/width
+let maxImageRatio = 2;
 
 function fillDepartureTable(station, departures) {
 
@@ -57,6 +58,7 @@ function fillTimeWidgets(){
 
 function fillMeme(data) {
 
+
     let items = data/*.items*/;
     let imgURL = "";
     let imgElement = document.getElementById("memeOfTheDay");
@@ -69,7 +71,7 @@ function fillMeme(data) {
         if(!items[i].is_album) {
 
             if(items[i].type.includes("image/") &&
-            items[i].height/items[i].width <= MAX_IMAGE_RATIO) {
+            items[i].height/items[i].width <= maxImageRatio) {
 
                 if(bestVotes < items[i].score){
 
@@ -84,7 +86,7 @@ function fillMeme(data) {
             // for (j = 0; j < items[i].images.length; j++) {
                         
             //             if(items[i].images[j].type.includes("image/") &&
-            //             items[i].images[j].height/items[i].images[j].width <= MAX_IMAGE_RATIO) {
+            //             items[i].images[j].height/items[i].images[j].width <= maxImageRatio) {
 
             //                 imgTitle.appendChild(document.createTextNode(items[i].title));
             //                 imgURL = items[i].images[j].link;                
@@ -146,6 +148,12 @@ function fillWeatherWidget(currentData, forecastData) {
 
     }
 
+}
+
+function fillInspiroQuote(url) {
+
+    document.getElementById("inspiroQuote").src = url;
+        
 }
 
 

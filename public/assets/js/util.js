@@ -1,6 +1,9 @@
 var timeOffset = 0;
 
 window.addEventListener("load", function(event) {
+    
+    let imgurDiv = document.getElementById("imgur");
+    maxImageRatio = imgurDiv.clientHeight / imgurDiv.clientWidth;
 
     refreshDepartureTables();
     
@@ -18,7 +21,8 @@ window.addEventListener("load", function(event) {
 
     setTimeout(reloadPage, 3600000);
 
-    //animateMeme(-1, 4000);
+    getInspiroQuote();
+    
 });
 
 setInterval(getTimeOffset, 86400000, "cet");

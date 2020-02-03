@@ -22,8 +22,6 @@ async function getWeatherData(city) {
     res = await fetch("https://api.openweathermap.org/data/2.5/weather?q=" + city + ",de&APPID=" + WEATHER_API_KEY + "&mode=json");
     let currentWeather = await res.json();
 
-    //console.log(forecast);
-
     fillWeatherWidget(currentWeather, calcDailyWeather(forecast));
     drawWeatherChart(forecast, '.ct-chart-weather');
 }
@@ -46,4 +44,14 @@ async function getDepartureDataDVB(station) {
 
 
     fillDepartureTable(station, data); 
+}
+
+async function getInspiroQuote() {
+
+    let res = await fetch('https://inspirobot.me/api?generate=true');
+    let url = await res.text();
+
+    console.log(url);
+
+    fillInspiroQuote(url);
 }
