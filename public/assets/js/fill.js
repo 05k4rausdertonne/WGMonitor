@@ -1,7 +1,6 @@
 const MAX_DEPARTURES = new Object({"Alaunplatz": 4, "Bischofsweg": 8, "Hans-Oster-Strasse": 4});
 const MAX_FORECAST_VALUES = 8;
-//const MAX_IMAGE_RATIO = 1.75 // = height/width
-let maxImageRatio = 2;
+const MAX_IMAGE_RATIO = 1.78 // = height/width
 
 function fillDepartureTable(station, departures) {
 
@@ -71,7 +70,7 @@ function fillMeme(data) {
         if(!items[i].is_album) {
 
             if(items[i].type.includes("image/") &&
-            items[i].height/items[i].width <= maxImageRatio) {
+            items[i].height/items[i].width <= MAX_IMAGE_RATIO) {
 
                 if(bestVotes < items[i].score){
 

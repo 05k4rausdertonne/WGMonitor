@@ -1,9 +1,13 @@
+const MEME_SUBREDDITS = ["https://api.imgur.com/3/gallery/r/dankmemes/top/day/0",
+                        "https://api.imgur.com/3/gallery/r/ich_iel/top/day/0"];
+
 async function getMemeData() {
+    let selectedSubReddit = getRandomInt(0, MEME_SUBREDDITS.length - 1)
 
     let headers = new Headers();
     headers.set('Authorization', "Client-ID a86175adb6181f3");
     
-    let res = await fetch("https://api.imgur.com/3/gallery/r/dankmemes/top/day/0", 
+    let res = await fetch(MEME_SUBREDDITS[selectedSubReddit], 
         {method:'GET',
         headers: headers});
     let data = await res.json();
@@ -54,4 +58,10 @@ async function getInspiroQuote() {
     console.log(url);
 
     fillInspiroQuote(url);
+}
+
+function getRandomInt(min, max) {
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    return Math.floor(Math.random() * (max - min + 1)) + min;
 }

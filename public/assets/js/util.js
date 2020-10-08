@@ -92,23 +92,20 @@ function timestampToTime(dt) {
     return padTwo(tempDate.getHours()) + ":" + padTwo(tempDate.getMinutes());
 }
 
-function animateMeme(direction, scrollTime){
+// function animateMeme(direction, scrollTime){
 
-    if(direction > 0) {
-        $("#imgur").animate({
-        scrollTop: 0
-        }, scrollTime);
-    } else {
-        $("#imgur").animate({
-        scrollTop: $("#memeOfTheDay").height() - $("#imgur").height()
-        }, scrollTime);
-    }
-    //console.log($("#memeOfTheDay").height() - $("#imgur").height());
-    setTimeout(animateMeme, scrollTime + 4000, -direction);
-
-    
-    
-}
+//     if(direction > 0) {
+//         $("#imgur").animate({
+//         scrollTop: 0
+//         }, scrollTime);
+//     } else {
+//         $("#imgur").animate({
+//         scrollTop: $("#memeOfTheDay").height() - $("#imgur").height()
+//         }, scrollTime);
+//     }
+//     //console.log($("#memeOfTheDay").height() - $("#imgur").height());
+//     setTimeout(animateMeme, scrollTime + 4000, -direction);
+// }
 
 
 
