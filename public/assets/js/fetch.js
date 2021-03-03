@@ -5,7 +5,7 @@ async function getMemeData() {
     let selectedSubReddit = getRandomInt(0, MEME_SUBREDDITS.length - 1)
 
     let headers = new Headers();
-    headers.set('Authorization', "Client-ID a86175adb6181f3");
+    headers.set('Authorization', "Client-ID e6b6fa324926933");
     
     let res = await fetch(MEME_SUBREDDITS[selectedSubReddit], 
         {method:'GET',
