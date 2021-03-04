@@ -92,6 +92,7 @@ function timestampToTime(dt) {
     return padTwo(tempDate.getHours()) + ":" + padTwo(tempDate.getMinutes());
 }
 
+
 // function animateMeme(direction, scrollTime){
 
 //     if(direction > 0) {

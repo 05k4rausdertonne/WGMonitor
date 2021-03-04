@@ -1,21 +1,27 @@
-const MEME_SUBREDDITS = ["https://api.imgur.com/3/gallery/r/dankmemes/top/day/0",
-                        "https://api.imgur.com/3/gallery/r/ich_iel/top/day/0"];
+const MEME_SUBREDDITS = ["http://www.reddit.com/r/dankmemes/top.json",
+                        "http://www.reddit.com/r/ich_iel/top.json"];
 
-async function getMemeData() {
-    let selectedSubReddit = getRandomInt(0, MEME_SUBREDDITS.length - 1)
+function getMemeData() {
+    let selectedSubReddit = MEME_SUBREDDITS[getRandomInt(0, MEME_SUBREDDITS.length - 1)];
+    console.log(selectedSubReddit);
 
-    let headers = new Headers();
-    headers.set('Authorization', "Client-ID e6b6fa324926933");
-    
-    let res = await fetch(MEME_SUBREDDITS[selectedSubReddit], 
-        {method:'GET',
-        headers: headers});
-    let data = await res.json();
-    data = data.data;
+    fetch(selectedSubReddit)
 
-    console.log(data);
+        .then(response => response.json())
 
-    fillMeme(data);
+        .then(jsonResponse => jsonResponse.data.children)
+
+        .then(data => {
+
+        console.log(data);        
+
+        fillMeme(data);
+    })
+    .catch(error => {
+
+        console.error('Error:', error);
+
+    });
 }
 
 async function getWeatherData(city) {

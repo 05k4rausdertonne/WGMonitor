@@ -55,49 +55,30 @@ function fillTimeWidgets(){
     
 }
 
-function fillMeme(data) {
+function fillMeme(items) {
 
-
-    let items = data/*.items*/;
-    let imgURL = "";
+    let imgItem;
     let imgElement = document.getElementById("memeOfTheDay");
     let imgTitle = document.getElementById("memeCaption");
     let bestVotes = 0;
 
-    outerLoop:
-    for (i = 0; i < items.length; i++) {
+    items.forEach(element => {
+        let item = element.data;
+        if( !item.is_video &&
+            !item.over_18 &&   
+            item.is_reddit_media_domain &&         
+            item.thumbnail_height/item.thumbnail_width <= MAX_IMAGE_RATIO &&
+            bestVotes < item.score) {
 
-        if(!items[i].is_album) {
+                bestVotes = item.score;
 
-            if(items[i].type.includes("image/") &&
-            items[i].height/items[i].width <= MAX_IMAGE_RATIO) {
-
-                if(bestVotes < items[i].score){
-
-                    bestVotes = items[i].score;
-
-                    imgItem = items[i];
-                }
+                imgItem = item;
             }
-
-        } else {
-
-            // for (j = 0; j < items[i].images.length; j++) {
-                        
-            //             if(items[i].images[j].type.includes("image/") &&
-            //             items[i].images[j].height/items[i].images[j].width <= maxImageRatio) {
-
-            //                 imgTitle.appendChild(document.createTextNode(items[i].title));
-            //                 imgURL = items[i].images[j].link;                
-            //                 break outerLoop;
-            //             }
-            // }
-        }        
-    }
+    });
     
     imgTitle.appendChild(document.createTextNode(imgItem.title));
 
-    imgElement.src = imgItem.link;
+    imgElement.src = imgItem.url;
 }
 
 function fillWeatherWidget(currentData, forecastData) {
