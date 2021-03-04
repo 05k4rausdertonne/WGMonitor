@@ -1,9 +1,8 @@
-const MEME_SUBREDDITS = ["http://www.reddit.com/r/dankmemes/top.json",
-                        "http://www.reddit.com/r/ich_iel/top.json"];
+const MEME_SUBREDDITS = ["https://www.reddit.com/r/dankmemes/top.json",
+                        "https://www.reddit.com/r/ich_iel/top.json"];
 
 function getMemeData() {
     let selectedSubReddit = MEME_SUBREDDITS[getRandomInt(0, MEME_SUBREDDITS.length - 1)];
-    console.log(selectedSubReddit);
 
     fetch(selectedSubReddit)
 

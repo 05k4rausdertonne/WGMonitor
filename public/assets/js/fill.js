@@ -75,6 +75,8 @@ function fillMeme(items) {
                 imgItem = item;
             }
     });
+
+    console.log(imgItem.url);
     
     imgTitle.appendChild(document.createTextNode(imgItem.title));
 
