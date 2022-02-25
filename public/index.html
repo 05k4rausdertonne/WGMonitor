@@ -8,7 +8,9 @@
         <link href="assets/css/chartist.css" type="text/css" rel="stylesheet">
         <link href="assets/css/style.css" type="text/css" rel="stylesheet">
         <!--check out http://gionkunz.github.io/chartist-js/api-documentation.html ;D-->
-        <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300" rel="stylesheet">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;600&display=swap" rel="stylesheet">
         
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <script type="text/javascript" src="assets/js/chartist.js"></script>
@@ -23,105 +25,125 @@
     </head>
 
     <body>
+        <div class="container">
 
-        <table>
-            <tr>
-                <td>
-                    <div class="time" >
-                        <div id="clock"></div>
-                        <div id="date"></div>
-                    </div>
+            <div class="col1">
+
+                <div class="display-inline item-center">
+                    <img class="icon" src="/public/assets/img/location.svg" />
+                    <h2>Neustadt WG</h2>
+                </div>
+
+                <div class="time item-center" >
+                    <div id="clock"></div>
+                    <div id="date"></div>
+                </div>
+
+                <div class="box-border margin-top-medium">
+
+                    <table id="currentWeather">
+                        <th id="cIcon"></th>
+                        <th id="cTemp"></th>
+                        <th id="cWind"></th>
+                    </table>
+              
+
+                    <div class="ct-chart-weather"></div>
+                
+                    <table id="forecast">
+                        <tr id="fDate"></tr>
+                        <tr id="fTemp"></tr>
+                        <tr id="fIcon"></tr>
+                        <tr id="fWind"></tr>
+                    </table>
+                </div>                         
                     
-                    
-                    <h1>Wetter</h1>
-                                               
-                        <table id="currentWeather">
-                            <tr id="cTemp"></tr>
-                            <tr id="cIcon"></tr>
-                            <tr id="cWind"></tr>
-                        </table>
-                  
-
-                        <div class="ct-chart-weather"></div>
-                    
-                        <table id="forecast">
-                            <tr id="fDate"></tr>
-                            <tr id="fTemp"></tr>
-                            <tr id="fIcon"></tr>
-                            <tr id="fWind"></tr>
-                        </table>
-                    
-                    <!--  </div>   -->
-                </td>
+            </div>
 
 
-                <td>
-                        
-                    <h1>Haltestellenabfahrten</h1>
+            <div class="col2">
 
-                        <div id="departures">
-                            <div>
-                                <h2>Alaunplatz</h2>
-                                <div class="table-departures">
+                <div class="display-inline item-center">
+                    <img class="icon" src="/public/assets/img/time.svg" />
+                    <h2>Abfahrten</h2>
+                </div>
+
+
+
+                        <div id="departures" class="margin-top-medium">
+                            
+                                <div class="box-border margin-bottom-medium">
+                                    <div class="display-inline margin-bottom-small">
+                                        <img class="icon" src="/public/assets/img/stop.svg" />
+                                        <h2>Alaunplatz</h2>
+                                    </div>
                                     <table id="Alaunplatz" class="departures">
                                         <thead>
                                             <th></th>
-                                            <th>Ziel</th>
-                                            <th>min</th>
+                                            <th></th>
+                                            <th></th>
                                         </thead>
                                         <tbody></tbody>
                                     </table>
                                 </div>
-                            </div>
+                            
                 
-                            <div>
-                                <h2>Bischofsweg</h2>
-                                <div class="table-departures">
+                            
+                                
+                                <div class="box-border margin-bottom-medium">
+                                    <div class="display-inline margin-bottom-small">
+                                        <img class="icon" src="/public/assets/img/stop.svg" />
+                                        <h2>Bischofsweg</h2>
+                                    </div>
                                     <table id="Bischofsweg" class="departures">
                                             <thead>
                                                 <th></th>
-                                                <th>Ziel</th>
-                                                <th>min</th>
+                                                <th></th>
+                                                <th></th>
                                             </thead>
                                             <tbody></tbody>
                                     </table>
                                 </div>
-                            </div>
+                            
                 
-                            <div>
-                                <h2>Hans-Oster-Straße</h2>
-                                <div class="table-departures">
+                                <div class="box-border">
+                                <div class="display-inline margin-bottom-small">
+                                    <img class="icon" src="/public/assets/img/stop.svg" />
+                                    <h2>Hans-Oster-Straße</h2>
+                                </div>
+                                
                                     <table id="Hans-Oster-Strasse" class="departures">
                                             <thead>
                                                 <th></th>
-                                                <th>Ziel</th>
-                                                <th>min</th>
+                                                <th></th>
+                                                <th></th>
                                             </thead>
                                             <tbody></tbody>
                                     </table>
                                 </div>
-                            </div>
+                           
                 
                         </div>
-                </td>
+            </div>
 
+            <div class="col3">
 
-                <td>
-
-                    <h1>Meme des Tages</h1>
+                <div class="display-inline item-center">
+                    <img class="icon" src="/public/assets/img/meme.svg" />
+                    <h2>Meme des Tages</h2>
+                </div>
                         
-                    <h2 id="memeCaption"></h2>
+                    <h2 id="memeCaption"></h2> 
         
-                    <div id="imgur">            
+                    <div id="imgur" class="margin-top-medium">            
                         <img src="" alt="memeOfTheDay" id="memeOfTheDay">
                         <p id="memeDescription"></p>
                     </div>
+            </div>
 
-                </td>
-            </tr>
-        </table>
-        
-        <img id="inspiroQuote" src="" alt="InspiroQuote™">
+    
+
+    </div>
 
     </body>
 
