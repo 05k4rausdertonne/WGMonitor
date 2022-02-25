@@ -1,6 +1,6 @@
 const MAX_DEPARTURES = new Object({"Alaunplatz": 4, "Bischofsweg": 8, "Hans-Oster-Strasse": 4});
 const MAX_FORECAST_VALUES = 8;
-const MAX_IMAGE_RATIO = 1.78 // = height/width
+const MAX_IMAGE_RATIO = 1.5 // = height/width
 
 function fillDepartureTable(station, departures) {
 
@@ -67,7 +67,7 @@ function fillMeme(items) {
         if( !item.is_video &&
             !item.over_18 &&   
             item.is_reddit_media_domain &&         
-            item.thumbnail_height/item.thumbnail_width <= MAX_IMAGE_RATIO &&
+            item.preview.images[0].source.height/item.preview.images[0].source.width <= MAX_IMAGE_RATIO &&
             bestVotes < item.score) {
 
                 bestVotes = item.score;
