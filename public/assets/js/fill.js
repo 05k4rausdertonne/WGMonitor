@@ -1,5 +1,5 @@
 const MAX_DEPARTURES = new Object({"Alaunplatz": 4, "Bischofsweg": 8, "Hans-Oster-Strasse": 4});
-const MAX_FORECAST_VALUES = 8;
+const MAX_FORECAST_VALUES = 3;
 const MAX_IMAGE_RATIO = 1.5 // = height/width
 
 function fillDepartureTable(station, departures) {
@@ -97,10 +97,10 @@ function fillWeatherWidget(currentData, forecastData) {
     currentWidget[0].innerHTML = "<td><img src='" + iconURL + 
     "' alt='" + currentData.weather[0].icon + "'></td>";
 
-    currentWidget[1].innerHTML = "</td>" + Math.round(kelvinToCelsius(currentData.main.temp) * 10) / 10 
+    currentWidget[1].innerHTML = "<td>" + Math.round(kelvinToCelsius(currentData.main.temp) * 10) / 10 
         + " °C</td>";
         
-    currentWidget[2].innerHTML = "<td>" + Math.round(currentData.wind.speed * 10) / 10 
+    currentWidget[2].innerHTML = "<td>" + "Ø " + Math.round(currentData.wind.speed * 10) / 10 
         + " km/h</td>";
 
     tabIcon.href = iconURL;
@@ -109,24 +109,27 @@ function fillWeatherWidget(currentData, forecastData) {
 
         let date = new Date(forecastData[i].date * 1000);
 
-        let dateCell = document.createElement("td");
-        dateCell.innerHTML = getDay(date.getDay());
-        forecastWidget[0].appendChild(dateCell);
-
-        let tempCell = document.createElement("td");
-        tempCell.innerHTML = Math.round(kelvinToCelsius(forecastData[i].min) * 10) / 10 + " °C <br>bis "
-            + Math.round(kelvinToCelsius(forecastData[i].max) * 10) / 10 + " °C";
-        forecastWidget[1].appendChild(tempCell);
-        
         let iconCell = document.createElement("td");
         iconCell.innerHTML = "<img src='http://openweathermap.org/img/wn/" 
             + forecastData[i].icon 
             + "d.png' alt='" + forecastData[i].icon  + "d'>";
-        forecastWidget[2].appendChild(iconCell);
+        forecastWidget[0].appendChild(iconCell);
+
+        let dateCell = document.createElement("td");
+        dateCell.innerHTML = getDay(date.getDay());
+        forecastWidget[1].appendChild(dateCell);
+
+        let tempCell = document.createElement("td");
+        tempCell.innerHTML = Math.round(kelvinToCelsius(forecastData[i].max) * 10) / 10 + " °C";
+        forecastWidget[2].appendChild(tempCell);
+
+        let tempminCell = document.createElement("td");
+        tempminCell.innerHTML = Math.round(kelvinToCelsius(forecastData[i].min) * 10) / 10 + " °C";
+        forecastWidget[3].appendChild(tempminCell);
 
         let windCell = document.createElement("td");
         windCell.innerHTML = "Ø " + Math.round(forecastData[i].wind * 10) / 10 + " km/h";
-        forecastWidget[3].appendChild(windCell);
+        forecastWidget[4].appendChild(windCell);
 
     }
 

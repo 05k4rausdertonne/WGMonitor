@@ -11,6 +11,7 @@ body {
     width: 1366px;
     height: 768px;
     */
+    
     padding: 24px;
     background-color: #111111;
     display: grid;
@@ -54,7 +55,7 @@ body {
     border: #ffffff solid 2px;
     border-radius: 14px;
     border-style: dotted;
-    padding: 20px;
+    padding: 20px 0px 18px 20px;
 }
 
 .margin-top-medium {
@@ -78,6 +79,10 @@ h1 {
     margin-bottom: 10px;
 }
 
+h2 {
+    font-weight: 600;
+}
+
 
 #clock {
     font-size: 5rem;
@@ -97,6 +102,17 @@ h1 {
 }
 */
 
+#departures td {
+    padding-bottom: 5px;
+    font-size: 0.93em;
+    padding-right: 10px;
+}
+
+/*
+    table-layout: auto;
+    width: 100%;
+*/
+
 #weather {
     display: flex;
     flex-direction: row;
@@ -109,16 +125,19 @@ h1 {
 #currentWeather {
     margin-left: auto;
     margin-right: auto;
+    margin-bottom: -10px;
+}
+
+#currentWeather th {
+    vertical-align: middle;
+}
+
+#cWind {
+    padding-left: 15px;
+    font-weight: 400;
 }
 
 
-.table-departures {
-    border: solid 0px;
-    border-radius: 10px;
-    background-color: #333a47;
-    padding: 10px;
-    margin-right: 20px;
-}
 
 #imgur {
     max-width: 50vw;
@@ -130,20 +149,28 @@ h1 {
     width: 100%;
 }
 
-th {
-    text-align: left;
-    padding-bottom: 5px;
-}
-
-td {
-    padding-right: 20px;
-}
-
-.inspiroquote {
-    /* TODO: platzierung fixen */
-    width: 0;
-}
 
 #memeCaption {
     display: none;
+}
+
+#forecast {
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 20px;
+}
+
+#forecast td {
+    padding-right: 30px;
+    padding-left: 30px;
+}
+
+#fTemp td {
+    font-size: 1.8rem;
+    font-weight: 600;
+    padding-top: 10px;
+}
+
+#fTempmin td {
+    padding-bottom: 10px;
 }
