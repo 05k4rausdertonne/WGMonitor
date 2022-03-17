@@ -137,7 +137,7 @@ function fillWeatherWidget(currentData, forecastData) {
 
 function fillInspiroQuote(url) {
 
-    document.getElementById("inspiroQuote").src = url;
+    // document.getElementById("inspiroQuote").src = url;
         
 }
 
