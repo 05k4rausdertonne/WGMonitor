@@ -7,30 +7,30 @@ body {
 }
 
 .container {
-    /*
-    width: 1366px;
-    height: 768px;
-    */
+    
+    width: 1600px;
+    height: 1000px;
+    
     
     padding: 24px;
-    background-color: #111111;
+    background-color: #464646;
     display: grid;
-    grid-template-columns: 1fr 24px 1fr 24px 1fr 24px 1fr 24px 1fr 24px 1fr 24px 1fr 24px 1fr 24px 1fr 24px 1fr 24px 1fr 24px 1fr;
+    grid-template-columns: 43% 24px 21% 24px auto;
 }
 
 .col1 {
     grid-column-start: 1;
-    grid-column-end: 10;
+    grid-column-end: 2;
 }
 
 .col2 {
-    grid-column-start: 11;
-    grid-column-end: 16;
+    grid-column-start: 3;
+    grid-column-end: 4;
 }
 
 .col3 {
-    grid-column-start: 17;
-    grid-column-end: 24;
+    grid-column-start: 5;
+    grid-column-end: 6;
 }
 
 .item-center {
@@ -55,7 +55,7 @@ body {
     border: #ffffff solid 2px;
     border-radius: 14px;
     border-style: dotted;
-    padding: 20px 0px 18px 20px;
+    padding: 20px 0px 18px 0px;
 }
 
 .margin-top-medium {
@@ -102,9 +102,13 @@ h2 {
 }
 */
 
+.margin-left-24 {
+    margin-left: 24px;
+}
+
 #departures td {
     padding-bottom: 5px;
-    font-size: 0.93em;
+    font-size: 1rem;
     padding-right: 10px;
 }
 
@@ -173,4 +177,8 @@ h2 {
 
 #fTempmin td {
     padding-bottom: 10px;
+}
+
+.ct-chart-weather {
+    margin: 10px 0 8px 90px;
 }
