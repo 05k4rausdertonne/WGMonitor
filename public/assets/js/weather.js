@@ -4,7 +4,7 @@ const CHART_OTIONS = {
     showArea: false,
     showLine: true,
     showPoint: false,
-    width: "450px",
+    width: "500px",
     fullWidth: true,
     axisX: {
       showGrid: false

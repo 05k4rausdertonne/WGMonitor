@@ -1,5 +1,5 @@
-const MAX_DEPARTURES = new Object({"Alaunplatz": 4, "Bischofsweg": 8, "Hans-Oster-Strasse": 4});
-const MAX_FORECAST_VALUES = 4;
+const MAX_DEPARTURES = new Object({"Alaunplatz": 6, "Bischofsweg": 8, "Hans-Oster-Strasse": 6});
+const MAX_FORECAST_VALUES = 3;
 const MAX_IMAGE_RATIO = 1.5 // = height/width
 
 function fillDepartureTable(station, departures) {
