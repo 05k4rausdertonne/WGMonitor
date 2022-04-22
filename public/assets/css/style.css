@@ -7,13 +7,14 @@ body {
 }
 
 .container {
-    
+    /*
     width: 1600px;
     height: 1000px;
+    */
     
     
     padding: 24px;
-    background-color: #464646;
+    background-color: #111111;
     display: grid;
     grid-template-columns: 43% 24px 21% 24px auto;
 }
