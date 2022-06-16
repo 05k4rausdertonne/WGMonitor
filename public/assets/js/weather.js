@@ -119,7 +119,7 @@ function drawWeatherChart(forecast, tag) {
             lastTempSegment = tempSegment;
         }
 
-        console.log("threshold " + tempSegment + " for temp " + temps[i]);
+        // console.log("threshold " + tempSegment + " for temp " + temps[i]);
 
         data.series[tempSegment][i] = temps[i];
         

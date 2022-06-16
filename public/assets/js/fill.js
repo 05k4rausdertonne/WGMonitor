@@ -68,7 +68,8 @@ function fillMeme(items) {
             !item.over_18 &&   
             item.is_reddit_media_domain &&         
             item.preview.images[0].source.height/item.preview.images[0].source.width <= MAX_IMAGE_RATIO &&
-            bestVotes < item.score) {
+            bestVotes < item.score &&
+            item.preview.images[0].variants.mp4 ==  undefined) {
 
                 bestVotes = item.score;
 
