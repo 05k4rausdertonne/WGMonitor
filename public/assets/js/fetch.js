@@ -1,4 +1,4 @@
-const MEME_SUBREDDITS = ["https://www.reddit.com/r/dankmemes/top.json",
+const MEME_SUBREDDITS = [//"https://www.reddit.com/r/memes/top.json",
                         "https://www.reddit.com/r/ich_iel/top.json"];
 
 function getMemeData() {
@@ -12,7 +12,7 @@ function getMemeData() {
 
         .then(data => {
 
-        console.log(data);        
+        console.log(data);   
 
         fillMeme(data);
     })
